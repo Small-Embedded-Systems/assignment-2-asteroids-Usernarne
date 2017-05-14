@@ -1,0 +1,54 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8                    ;
+    2 00000000         ;
+    3 00000000                 THUMB                        ;
+    4 00000000                 AREA             |.text|, CODE, READONLY ;
+    5 00000000                 EXPORT           flip
+    6 00000000                 entry
+    7 00000000         flip    FUNCTION
+    8 00000000 B506            PUSH             {R1, R2, LR} ; This saves the w
+                                                            orking registers.
+    9 00000002 4602            MOV              R2, R0      ;
+   10 00000004 FA92 F1A2       RBIT             R1, R2      ;
+   11 00000008 EA4F 6011       LSR              R0, R1, #24 ;
+   12 0000000C E8BD 4006       POP              {R1,R2, LR} ; This restores the
+                                                             previously saved r
+                                                            egisters.
+   13 00000010 4770            BX               LR
+   14 00000012                 ENDFUNC
+   15 00000012                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\bitflip.d -o.\objects\bitflip.o -I"E:\Year 2\CM0506 S
+mall Embedded Systems\Finished Assignment\assignment-2-asteroids-Constrob-maste
+r\asteroids\RTE" -IC:\Keil_v5\ARM\PACK\Keil\LPC4000_DFP\2.0.0\Device\Include -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 521" --predefi
+ne="CORE_M4 SETA 1" --list=.\listings\bitflip.lst bitflip.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 4 in file bitflip.s
+   Uses
+      None
+Comment: .text unused
+flip 00000000
+
+Symbol: flip
+   Definitions
+      At line 7 in file bitflip.s
+   Uses
+      At line 5 in file bitflip.s
+Comment: flip used once
+2 symbols
+335 symbols in table
